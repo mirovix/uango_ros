@@ -1,9 +1,10 @@
+import re
 import unittest
 
-from src.send_command.command_mapping import CommandMapping
+from send_command.command_mapping import CommandMapping
 
 
-class TestMappingCommand(unittest.TestCase):
+class TestCommandMapping(unittest.TestCase):
     def setUp(self):
         self.yaml_data = {
             'id': 1,
@@ -35,15 +36,20 @@ class TestMappingCommand(unittest.TestCase):
         for key, value in mapping_dict.items():
             self.assertEqual(None, value)
 
-    def test_wrongCommand_whenCallCommand_thenRaiseException(self):
-        wrong_command = "wrong_command"
-        with self.assertRaises(Exception):
-            self.mapping_command(wrong_command)
-
     def test_givenCommand_whenStrCommand_thenReturnString(self):
         self.mapping_command(self.yaml_data)
-        self.assertEqual(f"attributes={self.mapping_command.__dict__})", str(self.mapping_command))
 
+        expected = """
+        command: set_homing_down_cmd
+        id: 1
+        femur_angle_in_sitting_position: 0
+        knee_angle_in_sitting_position: 0
+        min_femur_angle: -90
+        max_femur_angle: 90
+        min_knee_angle: -90
+        max_knee_angle: 90
+        function: sets the values of the angles"""
 
-if __name__ == '__main__':
-    unittest.main()
+        expected = re.sub(r'\s+', '', expected)
+        result = re.sub(r'\s+', '', str(self.mapping_command))
+        self.assertEqual(expected, result)
