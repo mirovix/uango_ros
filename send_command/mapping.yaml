@@ -105,94 +105,94 @@ first_step_sx_walk:
 
 first_step_jerk_dx:
   id: 310
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
-  parameter_3: 3
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 3
   pause_time_between_steps: 0
-  parameter_8: 0
+  direction: 0
   function: Performs the first step with the right leg using the minimal jerk algorithm
 
 first_step_jerk_sx:
   id: 311
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
-  parameter_3: 3
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 3
   pause_time_between_steps: 0
-  parameter_8: 0
+  direction: 0
   function: Performs the first step with the left leg using the minimal jerk algorithm
 
 first_step_jerk_walk_dx:
   id: 410
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
-  parameter_3: 3
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 3
   pause_time_between_steps: 0
-  parameter_8: 0
+  direction: 0
   function: Performs the first step with the right leg using the minimal jerk algorithm in walk mode
 
 first_step_jerk_walk_sx:
   id: 411
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
-  parameter_3: 3
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 5
   pause_time_between_steps: 0
-  parameter_8: 0
+  direction: 0
   function: Performs the first step with the left leg using the minimal jerk algorithm in walk mode
 
 first_step_invp_dx:
   id: 510
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
   swing_time_ms: 2000
-  parameter_7: 3
-  pause_time_between_steps: 0
-  parameter_9: 0
+  order: 3
+  pause_time_between_steps: 1000
+  direction: 0
   function: Performs the first step with the right leg using the inverse pendulum algorithm
 
 first_step_invp_sx:
   id: 511
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
   swing_time_ms: 2000
-  parameter_7: 3
-  pause_time_between_steps: 0
-  parameter_9: 0
+  order: 3
+  pause_time_between_steps: 1000
+  direction: 0
   function: Performs the first step with the left leg using the inverse pendulum algorithm
 
 first_step_invp_walk_dx:
   id: 610
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
   swing_time_ms: 2000
-  parameter_7: 3
+  order: 3
   pause_time_between_steps: 0
-  parameter_9: 0
+  direction: 0
   function: Performs the first step with the right leg using the inverse pendulum algorithm in walk mode
 
 first_step_invp_walk_sx:
   id: 611
-  femur_length: 0
-  tibia_length: 0
-  step_length: 0
-  step_height: 0
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
   swing_time_ms: 2000
-  parameter_7: 3
+  order: 3
   pause_time_between_steps: 0
-  parameter_9: 0
+  direction: 0
   function: Performs the first step with the left leg using the inverse pendulum algorithm in walk mode
 
 warmup_dx:
