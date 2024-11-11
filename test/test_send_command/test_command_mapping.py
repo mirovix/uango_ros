@@ -53,3 +53,8 @@ class TestCommandMapping(unittest.TestCase):
         expected = re.sub(r'\s+', '', expected)
         result = re.sub(r'\s+', '', str(self.mapping_command))
         self.assertEqual(expected, result)
+
+    def test_givenCommand_whenGetCommandSequence_thenReturnSequenceString(self):
+        self.mapping_command(self.yaml_data)
+        expected = "1,0,0,-90,90,-90,90;"
+        self.assertEqual(expected, self.mapping_command.get_command_sequence())
