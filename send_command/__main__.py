@@ -2,6 +2,8 @@ import asyncio
 import os
 import sys
 
+from dotenv import dotenv_values
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from command_web_socket import CommandWebSocket
@@ -12,9 +14,10 @@ if __name__ == '__main__':
     command = command_main()
     print(command)
 
-    ip = os.getenv('IP_ADDRESS', '192.168.12.1')
-    port = os.getenv('PORT', 8080)
-    socket_address = ip + ':' + str(port)
+    env = dotenv_values()
+    ip = env['IP_ADDRESS']
+    port = env['PORT']
+    socket_address = str(ip) + ':' + str(port)
     web_socket = CommandWebSocket(command.get_command_sequence(), socket_address)
     asyncio.run(web_socket())
     exit(0)
