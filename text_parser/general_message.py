@@ -8,4 +8,4 @@ class GeneralMessage:
         return self.name == other.name and self.function == other.function and self.value == other.value
 
     def __str__(self):
-        return f"name = {self.name}, value = {self.value}"
+        return f"{self.name} = {self.value}"

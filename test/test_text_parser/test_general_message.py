@@ -19,4 +19,4 @@ class TestGeneralMessage(unittest.TestCase):
 
     def test_givenMessage_whenConvertedToString_thenStringIsReturned(self):
         msg = GeneralMessage("TestName", "TestFunction", 123)
-        self.assertEqual(str(msg), "name = TestName, value = 123")
+        self.assertEqual(str(msg), "TestName = 123")
