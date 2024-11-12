@@ -34,7 +34,7 @@ class TestCommandMapping(unittest.TestCase):
         mapping_dict = self.mapping_command.__dict__
         mapping_dict.pop('command')
         for key, value in mapping_dict.items():
-            self.assertEqual(None, value)
+            self.assertIsNone(value)
 
     def test_givenCommand_whenStrCommand_thenReturnString(self):
         self.mapping_command(self.yaml_data)

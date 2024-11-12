@@ -13,7 +13,7 @@ class CommandWebSocket:
                 print(f"sent: {self.command_sequence}")
 
                 await websocket.recv()
-                print(f"command correctly received")
+                print("command correctly received")
                 return True
 
         except Exception as e:
