@@ -1,11 +1,64 @@
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=bugs)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=coverage)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=mirovix_uango_ros&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=mirovix_uango_ros)
+
+
+# Robot Control Commands
+
+This document provides an overview of the commands used to set up and operate a robotic system through a serial port connection via `/dev/ttymxc7`.
+
+## Setup
+
+Before sending any commands, ensure the serial port is correctly configured.
+
+### 1. Port Setup
+Set the port communication speed to `115200` baud.
+
+```bash
+stty -F /dev/ttymxc7 115200
+```
+
+## Commands
+
+Each command is sent to the serial port (`/dev/ttymxc7`) to control specific robotic actions.
+
+### 2. Basic Commands
+
+| Command       | Code | Description                          |
+|---------------|------|--------------------------------------|
+| turn_on       | 10   | Turns on the device.                |
+| reset_fault   | 15   | Recovers from a fault.              |
+| homing_up     | 20   | Initiates the homing sequence with a specified time delay. |
+| next          | 90   | Moves to the next step.             |
+| stop          | 70   | Stops all operations.               |
+
+### 3. Motion Control Commands
+
+These commands control movement, including step size, height, direction, and timing.
+
+#### Minimum Jerk Movement
+
+| Command                    | Hip Length (mm) | Tibia Length (mm) | Step Length (mm) | Step Height (mm) | Order | Interval (ms) | Direction |
+|----------------------------|-----------------|--------------------|------------------|------------------|-------|---------------|-----------|
+| first_step_jerk_dx         | 310             | 350               | 465             | 460             | 100   | 3             | 0         |
+| first_step_jerk_sx         | 311             | 350               | 465             | 460             | 100   | 3             | 0         |
+| first_step_jerk_walk_dx    | 410             | 350               | 465             | 460             | 100   | 3             | 0         |
+| first_step_jerk_walk_sx    | 411             | 350               | 465             | 460             | 100   | 5             | 0         |
+
+#### Inverted Pendulum Movement
+
+| Command                  | Hip Length (mm) | Tibia Length (mm) | Step Length (mm) | Step Height (mm) | Swing Time (ms) | Order | Interval (ms) | Direction |
+|--------------------------|-----------------|--------------------|------------------|------------------|-----------------|-------|---------------|-----------|
+| first_step_invp_dx       | 510         | 350               | 465             | 460             | 2000            | 3     | 1000          | 0         |
+| first_step_invp_sx       | 511         | 350               | 465             | 460             | 2000            | 3     | 1000          | 0         |
+| first_step_invp_walk_dx  | 610         | 350               | 465             | 460             | 2000            | 3     | 0             | 0         |
+| first_step_invp_walk_sx  | 611         | 350               | 465             | 460             | 2000            | 3     | 0             | 0         |
+
+## Run Commands
+
+To run a command, send the command code to the serial port.
+
+```bash
+cd ~/uango_ros/
+python3 send_command **command**
+```
+
+---
