@@ -2,9 +2,9 @@ import websockets
 
 
 class CommandWebSocket:
-    def __init__(self, command_sequence: str, web_socket_output: str = "ws://192.168.12.1:8080"):
+    def __init__(self, command_sequence: str, web_socket_output: str):
         self.command_sequence = command_sequence
-        self.web_socket_output = web_socket_output
+        self.web_socket_output = 'ws://' + web_socket_output
 
     async def __call__(self) -> bool:
         try:
