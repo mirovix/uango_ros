@@ -1,4 +1,4 @@
-name: Upload Python Package to GitHub Packages
+name: Upload Python Package to Fury
 
 on:
   release:
@@ -12,33 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4  # Checkout the repository
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.12.x'  # Set Python version
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build twine
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Build package
-      run: python setup.py sdist bdist_wheel 
-    - name: Publish package to GitHub Packages
-      run: |
-        twine upload --repository-url https://upload.github.com/mirovix/uango_ros dist/*
-      env:
-        TWINE_USERNAME: ${{ github.actor }}  # GitHub username
-        TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}  # GitHub token (automatically available)
+      - uses: actions/checkout@v4  # Checkout the repository
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12.x'  # Set Python version
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Build package
+        run: python setup.py sdist bdist_wheel  # Build the source distribution and wheel
+      - name: Upload package to Fury using curl
+        run: |
+          curl -F package=@dist/*.tar.gz https://$FURY_TOKEN@push.fury.io/miroljubmihailovic98/
+        env:
+          FURY_TOKEN: ${{ secrets.FURY_TOKEN }}  # Use a secret to securely store your Fury push token
 
   create-release:
     runs-on: ubuntu-latest
     needs: deploy  # Ensure the deploy job runs first
 
     steps:
-    - name: Create a new GitHub release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: ./dist/*  # Attach all files from dist/
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+      - name: Create a new GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./dist/*  # Attach all files from dist/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
