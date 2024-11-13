@@ -22,7 +22,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install build twine  # Install build and twine
     - name: Build package
-      run: python -m build  # Build the package (creates dist/ folder)
+      run: python setup.py sdist bdist_wheel  # Build the package (creates dist/ folder)
     - name: Publish package to GitHub Packages
       run: |
         twine upload --repository-url https://upload.github.com/OWNER/REPO dist/*
