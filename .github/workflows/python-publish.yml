@@ -23,10 +23,11 @@ jobs:
           pip install build twine
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build package
-        run: python setup.py sdist bdist_wheel  # Build the source distribution and wheel
+        run: python setup.py bdist_wheel  # Build the source distribution and wheel
       - name: Upload package to Fury using curl
         run: |
-          curl -F package=@dist/*.tar.gz https://$FURY_TOKEN@push.fury.io/miroljubmihailovic98/
+            PACKAGE_FILE=$(ls dist/*.whl | head -n 1)
+            curl -F package=@$PACKAGE_FILE https://$FURY_TOKEN@push.fury.io/miroljubmihailovic98/
         env:
           FURY_TOKEN: ${{ secrets.FURY_TOKEN }}  # Use a secret to securely store your Fury push token
 
