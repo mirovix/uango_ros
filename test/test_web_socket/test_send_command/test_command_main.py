@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from send_command.command_main import CommandMain
+from web_socket.send_command.command_main import CommandMain
 
 
 class TestCommandMain(unittest.TestCase):
@@ -28,7 +28,7 @@ class TestCommandMain(unittest.TestCase):
         self.assertGreater(len(mapping), 4)
         self.assertIsInstance(mapping, dict)
 
-    @patch('send_command.command_main.CommandMain._load_mapping_yaml')
+    @patch('web_socket.send_command.command_main.CommandMain._load_mapping_yaml')
     def test_givenCommandMain_WhenCallCommandMain_ThenReturnCommandMapping(self, mock_load_mapping_yaml):
         mock_load_mapping_yaml.return_value = self.mocked_mapping
         command_mapping = self.command_main()
@@ -36,7 +36,7 @@ class TestCommandMain(unittest.TestCase):
         self.assertEqual("function", command_mapping.function)
         self.assertEqual(1, command_mapping.id)
 
-    @patch('send_command.command_main.CommandMain._load_mapping_yaml')
+    @patch('web_socket.send_command.command_main.CommandMain._load_mapping_yaml')
     def test_givenCommandMain_WhenCommandNotFound_ThenRaiseException(self, mock_load_mapping_yaml):
         mock_load_mapping_yaml.return_value = self.mocked_mapping
         with self.assertRaises(SystemExit):

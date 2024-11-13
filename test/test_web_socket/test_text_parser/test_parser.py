@@ -1,7 +1,7 @@
 import unittest
 
-from text_parser.message import Message
-from text_parser.parser import Parser
+from web_socket.text_parser.message import Message
+from web_socket.text_parser.parser import Parser
 
 
 class TestParser(unittest.TestCase):

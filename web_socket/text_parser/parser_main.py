@@ -2,7 +2,7 @@ import os
 
 import yaml
 
-from text_parser.parser import Parser
+from web_socket.text_parser.parser import Parser
 
 
 class ParserMain:

@@ -1,7 +1,7 @@
 import re
 import unittest
 
-from send_command.command_mapping import CommandMapping
+from web_socket.send_command.command_mapping import CommandMapping
 
 
 class TestCommandMapping(unittest.TestCase):

@@ -1,4 +1,4 @@
-from text_parser.message import Message
+from web_socket.text_parser.message import Message
 
 
 class Parser:
