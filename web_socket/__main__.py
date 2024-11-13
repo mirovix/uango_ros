@@ -21,7 +21,7 @@ if __name__ == '__main__':
     web_socket = WebSocketMain(command_sequence, socket_address)
     response = asyncio.run(web_socket())
 
-    if response is not None:
+    if response and str(response).strip():
         parser_main = ParserMain(response)
         parser_main()
         print(parser_main)
