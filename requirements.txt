@@ -16,3 +16,4 @@ typing_extensions~=4.12.2
 tzdata~=2024.2
 u~=0.1
 websockets~=14.0
+wheel==0.45.0
