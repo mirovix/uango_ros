@@ -58,7 +58,7 @@ To run a command, send the command code to the serial port.
 
 ```bash
 cd ~/uango_ros/
-python3 send_command **command**
+python3 web_socket **command**
 ```
 
 ---
