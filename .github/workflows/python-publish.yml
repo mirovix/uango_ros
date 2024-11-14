@@ -3,6 +3,10 @@ name: deploy-release
 on:
   release:
     types: [published]
+    workflow_run:
+      workflows: [ "build" ]
+      types:
+        - completed
 
 permissions:
   contents: write
@@ -26,10 +30,10 @@ jobs:
           pip install build twine
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build package
-        run: python setup.py sdist
+        run: python setup.py sdist bdist_wheel
       - name: Upload package to Fury using curl
         run: |
-            PACKAGE_FILE=$(ls dist/*.gz | head -n 1)
+            PACKAGE_FILE=$(ls dist/*.whl | head -n 1)
             curl -F package=@$PACKAGE_FILE https://$FURY_TOKEN@push.fury.io/miroljubmihailovic98/
         env:
           FURY_TOKEN: ${{ secrets.FURY_TOKEN }}
