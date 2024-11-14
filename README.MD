@@ -58,29 +58,29 @@ To run a command, send the command code to the serial port.
 
 #### 1. Prepare the environment
 ```bash
-    mkdir ~/uango_ros/
-    cd ~/uango_ros/
-    python3.12 -m venv venv
-    source venv/bin/activate
+mkdir ~/uango_ros/
+cd ~/uango_ros/
+python3.12 -m venv venv
+source venv/bin/activate
 
 ```
 #### 2. Install the package
 ```bash
-    echo "--index-url https://pypi.fury.io/miroljubmihailovic98/" > requirements.txt
-    echo "--extra-index-url https://pypi.org/simple/" >> requirements.txt
-    echo "uango_ros_web_socket" >> requirements.txt
-    pip install -r requirements.txt
+echo "--index-url https://pypi.fury.io/miroljubmihailovic98/" > requirements.txt
+echo "--extra-index-url https://pypi.org/simple/" >> requirements.txt
+echo "uango_ros_web_socket" >> requirements.txt
+pip install -r requirements.txt
 ```
 
 #### 3. Set environment variables
 ```bash
-    export IP_ADDRESS_UANGO=192.168.12.1
-    export PORT_UANGO=8080
+export IP_ADDRESS_UANGO=192.168.12.1
+export PORT_UANGO=8080
 ```
 
 #### 4. Run the command
 ```bash
-    python3 web_socket **command**
+python3 -m web_socket **command**
 ```
 
 ---
