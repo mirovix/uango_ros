@@ -80,9 +80,14 @@ export IP_ADDRESS_UANGO=192.168.12.1
 export PORT_UANGO=8080
 ```
 
-#### 4. Run the command
+#### 4.1 Run by command line
 ```bash
-python3 -m web_socket **command**
+python3 -m uango_connector **command**
+```
+
+#### 4.2 Run with GUI
+```bash
+python3 -m uango_connector.gui
 ```
 
 ---
