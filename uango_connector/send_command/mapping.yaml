@@ -91,7 +91,328 @@ first_step_dx_walk:
   id: 210
   length: 0
   height: 0
+  speed:reset_wdt:
+  id: 1
+  function: Resets the internal watchdog timer of the microcontroller
+
+set_check_homing_down:
+  id: 9
+  femur_angle_in_sitting_position: 1221
+  knee_angle_in_sitting_position: -1221
+  function: Sets the angle values in the sitting position and checks for necessary homing
+
+set_homing_down:
+  id: 97
+  femur_angle_in_sitting_position: 1221
+  knee_angle_in_sitting_position: -1221
+  function: Sets the angle values in the sitting position
+
+turn_on:
+  id: 10
+  function: Activates the motors
+
+turn_off:
+  id: 13
+  function: Turns off the motors
+
+reset_fault:
+  id: 15
+  function: Attempts to reset the driver errors
+
+homing_up:
+  id: 20
+  homing_duration: 100
+  function: Performs homing in the standing position with the set duration
+
+homing_down:
+  id: 21
+  homing_duration: 100
+  femur_angle_in_sitting_position: 1221
+  knee_angle_in_sitting_position: -1221
+  function: Performs homing in the sitting position with the set duration and targets the set angles
+
+stand_up_crutechs:
+  id: 29
+  homing_duration: 100
+  function: Performs the stand-up movement with a walker in the configured time
+
+stand_up_walker:
+  id: 30
+  homing_duration: 100
+  function: Performs the standard stand-up movement in the configured time
+
+sit_down:
+  id: 31
+  femur_angle_in_sitting_position: 1221
+  knee_angle_in_sitting_position: -1221
+  movement_duration: 100
+  function: Performs the sitting movement with the set duration and targets the set angles
+
+stair_up_dx_fast:
+  id: 36
+  function: Performs the stair climbing movement starting with the right foot
+
+stair_down_dx_fast:
+  id: 39
+  function: Performs the stair descending movement starting with the right foot
+
+stair_up_sx_fast:
+  id: 42
+  function: Performs the stair climbing movement starting with the left foot
+
+stair_down_sx_fast:
+  id: 45
+  function: Performs the stair descending movement starting with the left foot
+
+first_step_dx:
+  id: 110
+  length: 0
+  height: 0
   speed: 0
+  interval_between_half_steps: 0
+  function: Performs the first half-step with the right leg using the selected map for length, height, and speed
+
+first_step_sx:
+  id: 111
+  length: 0
+  height: 0
+  speed: 0
+  interval_between_half_steps: 0
+  function: Performs the first half-step with the left leg using the selected map for length, height, and speed
+
+first_step_dx_walk:
+  id: 210
+  length: 0
+  height: 0
+  speed: 0
+  interval_between_half_steps: 0
+  function: Performs the first full step with the right leg using the selected map for length, height, and speed
+
+first_step_sx_walk:
+  id: 211
+  length: 0
+  height: 0
+  speed: 0
+  interval_between_half_steps: 0
+  function: Performs the first full step with the left leg using the selected map for length, height, and speed
+
+first_step_jerk_dx:
+  id: 310
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 3
+  pause_time_between_steps: 0
+  direction: 0
+  function: Performs the first step with the right leg using the minimal jerk algorithm
+
+first_step_jerk_sx:
+  id: 311
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 3
+  pause_time_between_steps: 0
+  direction: 0
+  function: Performs the first step with the left leg using the minimal jerk algorithm
+
+first_step_jerk_walk_dx:
+  id: 410
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 3
+  pause_time_between_steps: 0
+  direction: 0
+  function: Performs the first step with the right leg using the minimal jerk algorithm in walk mode
+
+first_step_jerk_walk_sx:
+  id: 411
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  order: 5
+  pause_time_between_steps: 0
+  direction: 0
+  function: Performs the first step with the left leg using the minimal jerk algorithm in walk mode
+
+first_step_invp_dx:
+  id: 510
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  swing_time_ms: 2000
+  order: 3
+  pause_time_between_steps: 1000
+  direction: 0
+  function: Performs the first step with the right leg using the inverse pendulum algorithm
+
+first_step_invp_sx:
+  id: 511
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  swing_time_ms: 2000
+  order: 3
+  pause_time_between_steps: 1000
+  direction: 0
+  function: Performs the first step with the left leg using the inverse pendulum algorithm
+
+first_step_invp_walk_dx:
+  id: 610
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  swing_time_ms: 2000
+  order: 3
+  pause_time_between_steps: 0
+  direction: 0
+  function: Performs the first step with the right leg using the inverse pendulum algorithm in walk mode
+
+first_step_invp_walk_sx:
+  id: 611
+  femur_length: 350
+  tibia_length: 465
+  step_length: 460
+  step_height: 100
+  swing_time_ms: 2000
+  order: 3
+  pause_time_between_steps: 0
+  direction: 0
+  function: Performs the first step with the left leg using the inverse pendulum algorithm in walk mode
+
+warmup_dx:
+  id: 50
+  length: 0
+  height: 0
+  speed: 0
+  parameter_5: 0
+  function: Performs the warm-up with the right leg using the selected map for length, height, and speed
+
+warmup_sx:
+  id: 51
+  length: 0
+  height: 0
+  speed: 0
+  parameter_5: 0
+  function: Performs the warm-up with the left leg using the selected map for length, height, and speed
+
+squat:
+  id: 60
+  function: Performs the squat sequence (continuous standing and sitting) until the stop command is received
+
+stop:
+  id: 70
+  function: Stops the ongoing step or walk movement and returns to the standing position
+
+next:
+  id: 90
+  function: Performs the next half-step in step mode
+
+set_current_limit_dx:
+  id: 2
+  current_in_ma: 6000
+  function: Sets the maximum continuous current for the right leg
+
+set_peak_current_dx:
+  id: 3
+  current_in_ma: 7500
+  function: Sets the maximum peak current for the right leg
+
+set_peak_timeout_dx:
+  id: 4
+  peak_timeout_in_tenths_of_seconds: 15
+  function: Sets the maximum allowable duration of the peak current for the right leg
+
+set_current_limit_sx:
+  id: 5
+  current_in_ma: 6000
+  function: Sets the maximum continuous current for the left leg
+
+set_peak_current_sx:
+  id: 6
+  current_in_ma: 7500
+  function: Sets the maximum peak current for the left leg
+
+set_peak_timeout_sx:
+  id: 7
+  peak_timeout_in_tenths_of_seconds: 15
+  function: Sets the maximum allowable duration of the peak current for the left leg
+
+set_power_alert:
+  id: 8
+  enable_disable: 1
+  function: Enables or disables the power alert
+
+set_following_error_window:
+  id: 1000
+  max_angle_mismatch_in_mrad: 174
+  function: Sets the angle used by the drivers to manage following error during movement
+
+set_following_error_timeout:
+  id: 1010
+  max_timeout_in_ms: 1000
+  function: Sets the maximum time of following error window exit before following error intervention
+
+store_abs_encoder_zero:
+  id: 2000
+  driver_selection: 1
+  function: Performs the zeroing of the absolute encoder for the selected driver
+
+clear_mismatch_error:
+  id: 3000
+  function: Clears the mismatch error
+
+get_stream:
+  id: 200
+  function: Requests the system status
+
+set_enc_fem_dx:
+  id: 800
+  encoder_value: 0-1023
+  function: Sets the calibration of the right femoral absolute encoder
+
+set_enc_fem_sx:
+  id: 801
+  encoder_value: 0-1023
+  function: Sets the calibration of the left femoral absolute encoder
+
+set_enc_tib_dx:
+  id: 802
+  encoder_value: 0-1023
+  function: Sets the calibration of the right tibial absolute encoder
+
+set_enc_tib_sx:
+  id: 803
+  encoder_value: 0-1023
+  function: Sets the calibration of the left tibial absolute encoder
+
+get_enc_fem_dx:
+  id: 900
+  function: Reads the calibration of the right femoral absolute encoder
+
+get_enc_fem_sx:
+  id: 901
+  function: Reads the calibration of the left femoral absolute encoder
+
+get_enc_tib_dx:
+  id: 902
+  function: Reads the calibration of the right tibial absolute encoder
+
+get_enc_tib_sx:
+  id: 903
+  function: Reads the calibration of the left tibial absolute encoder
+
+enter_boot:
+  id: 9999
+  function: Enters the update mode via serial OTA; the device must be restarted to exit 0
   interval_between_half_steps: 0
   function: Performs the first full step with the right leg using the selected map for length, height, and speed
 

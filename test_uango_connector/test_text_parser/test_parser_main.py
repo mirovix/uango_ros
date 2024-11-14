@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from web_socket.text_parser.parser_main import ParserMain
+from uango_connector.text_parser.parser_main import ParserMain
 
 
 class TestCommandMain(unittest.TestCase):
@@ -27,13 +27,13 @@ class TestCommandMain(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             self.command_main._load_mapping_yaml()
 
-    @patch("web_socket.text_parser.parser_main.yaml.load")
+    @patch("uango_connector.text_parser.parser_main.yaml.load")
     def test_GivenCommandMain_WhenMappingFileIsFound_ThenReturnExoData(self, yaml_load):
         yaml_load.return_value = self.mocked_exo_data
         exo_data = self.command_main._load_mapping_yaml()
         self.assertEqual(self.mocked_exo_data, exo_data)
 
-    @patch("web_socket.text_parser.parser_main.ParserMain._load_mapping_yaml")
+    @patch("uango_connector.text_parser.parser_main.ParserMain._load_mapping_yaml")
     def test_GivenCommandMain_WhenCallCommandMain_ThenReturnSetAttributes(self, load_mapping_yaml):
         load_mapping_yaml.return_value = self.mocked_exo_data
         self.command_main()

@@ -1,7 +1,7 @@
 import unittest
 
-from web_socket.text_parser.message import Message
-from web_socket.text_parser.parser import Parser
+from uango_connector.text_parser.message import Message
+from uango_connector.text_parser.parser import Parser
 
 
 class TestParser(unittest.TestCase):

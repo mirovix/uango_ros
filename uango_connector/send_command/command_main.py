@@ -2,21 +2,14 @@ import os
 
 import yaml
 
-from web_socket.send_command.command_mapping import CommandMapping
+from uango_connector.send_command.command_mapping import CommandMapping
 
 
 class CommandMain:
-    def __init__(self, args: list):
-        self.command = self._check_command(args)
+    def __init__(self, command: str):
+        self.command = command
         base_path = os.path.dirname(os.path.abspath(__file__))
         self.yaml_path = os.path.join(base_path, "mapping.yaml")
-
-    @staticmethod
-    def _check_command(args: list) -> str:
-        if len(args) < 2:
-            print("Empty command")
-            exit(1)
-        return args[1]
 
     def __call__(self):
         yaml_map = self._load_mapping_yaml()

@@ -2,7 +2,7 @@ import os
 
 import yaml
 
-from web_socket.text_parser.parser import Parser
+from uango_connector.text_parser.parser import Parser
 
 
 class ParserMain:

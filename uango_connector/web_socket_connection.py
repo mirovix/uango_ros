@@ -3,7 +3,7 @@ import asyncio
 import websockets
 
 
-class WebSocketMain:
+class WebSocketConnection:
     def __init__(self, command_sequence: str, web_socket_output: str, timeout: float = 1.0):
         self.command_sequence = command_sequence
         self.web_socket_output = 'ws://' + web_socket_output

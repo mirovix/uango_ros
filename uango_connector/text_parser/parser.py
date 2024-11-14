@@ -1,4 +1,4 @@
-from web_socket.text_parser.message import Message
+from uango_connector.text_parser.message import Message
 
 
 class Parser:

@@ -1,7 +1,7 @@
 import re
 import unittest
 
-from web_socket.send_command.command_mapping import CommandMapping
+from uango_connector.send_command.command_mapping import CommandMapping
 
 
 class TestCommandMapping(unittest.TestCase):
