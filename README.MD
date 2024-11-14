@@ -29,6 +29,8 @@ Each command is sent to the serial port (`/dev/ttymxc7`) to control specific rob
 | homing_up     | 20   | Initiates the homing sequence with a specified time delay. |
 | next          | 90   | Moves to the next step.             |
 | stop          | 70   | Stops all operations.               |
+| turn_off      | 80   | Turns off the device.               |
+| get_stream    | 200 | Gets the stream data.               |
 
 ### 3. Motion Control Commands
 
