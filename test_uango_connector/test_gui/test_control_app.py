@@ -5,7 +5,7 @@ from unittest.mock import patch, MagicMock
 from uango_connector.gui.control_app import ControlApp
 
 
-class TestInterface(unittest.TestCase):
+class TestControlApp(unittest.TestCase):
     def setUp(self):
         self.root = tk.Tk()
         self.app = ControlApp(self.root)

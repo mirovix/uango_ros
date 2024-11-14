@@ -20,7 +20,7 @@ if '--version' in sys.argv:
     sys.argv.pop(index)
 
 setup(
-    name="uango_ros_web_socket",
+    name="Uango Connector",
     author='Miro',
     version=version,
     author_email='miroljubmihailovic98@gmail.com',
