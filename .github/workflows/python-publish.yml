@@ -2,43 +2,57 @@ name: Upload Python Package to Fury
 
 on:
   release:
-    types: [published]  # Trigger workflow on release creation
+    types: [published]
 
 permissions:
-  contents: read  # Allow reading the repository contents
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4  # Checkout the repository
+      - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.12.x'  # Set Python version
+          python-version: '3.12.x'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install build twine
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build package
-        run: python setup.py bdist_wheel  # Build the source distribution and wheel
+        run: python setup.py sdist
       - name: Upload package to Fury using curl
         run: |
-            PACKAGE_FILE=$(ls dist/*.whl | head -n 1)
+            PACKAGE_FILE=$(ls dist/*.gz | head -n 1)
             curl -F package=@$PACKAGE_FILE https://$FURY_TOKEN@push.fury.io/miroljubmihailovic98/
         env:
-          FURY_TOKEN: ${{ secrets.FURY_TOKEN }}  # Use a secret to securely store your Fury push token
+          FURY_TOKEN: ${{ secrets.FURY_TOKEN }}
 
   create-release:
     runs-on: ubuntu-latest
-    needs: deploy  # Ensure the deploy job runs first
+    needs: deploy
+
+    permissions:
+      contents: write
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build project (or ensure dist is populated)
+        run: |
+          # Commands to build or package your project
+          echo "Ensure dist directory is populated with release files"
+
+      - name: Check dist directory
+        run: ls -la ./dist
+
       - name: Create a new GitHub release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./dist/*  # Attach all files from dist/
+          files: dist/*
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
