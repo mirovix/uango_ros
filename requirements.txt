@@ -28,6 +28,7 @@ PyYAML==6.0.2
 service-identity==24.2.0
 setuptools==75.4.0
 six==1.16.0
+tk==0.1.0
 Twisted==24.10.0
 txaio==23.1.1
 typing_extensions==4.12.2
