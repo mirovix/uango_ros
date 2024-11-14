@@ -28,4 +28,4 @@ class TestControlApp(unittest.TestCase):
         self.assertEqual(30, self.root.winfo_children()[0].cget('width'))
 
     def test_givenControlApp_whenGetButtonName_thenReturnList(self):
-        self.assertEqual(14, len(self.app.get_buttons_name()))
+        self.assertEqual(15, len(self.app.get_buttons_name()))

@@ -25,6 +25,7 @@ class ControlApp:
         return [
             "turn_on",
             "homing_up",
+            "homing_down",
             "reset_fault",
             "first_step_jerk_dx",
             "first_step_jerk_sx",
