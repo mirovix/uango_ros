@@ -12,6 +12,7 @@ if '--version' in sys.argv:
     index = sys.argv.index('--version')
     try:
         version = sys.argv[index + 1]
+        version = version.split('/')[-1]
     except IndexError:
         print('version not specified')
         sys.exit(1)
