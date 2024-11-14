@@ -13,7 +13,7 @@ Before sending any commands, ensure the serial port is correctly configured.
 Set the port communication speed to `115200` baud.
 
 ```bash
-stty -F /dev/ttymxc7 115200
+    stty -F /dev/ttymxc7 115200
 ```
 
 ## Commands
@@ -52,13 +52,35 @@ These commands control movement, including step size, height, direction, and tim
 | first_step_invp_walk_dx  | 610         | 350               | 465             | 460             | 2000            | 3     | 0             | 0         |
 | first_step_invp_walk_sx  | 611         | 350               | 465             | 460             | 2000            | 3     | 0             | 0         |
 
-## Run Commands
+## Install and Run Commands
 
 To run a command, send the command code to the serial port.
 
+#### 1. Prepare the environment
 ```bash
-cd ~/uango_ros/
-python3 web_socket **command**
+    mkdir ~/uango_ros/
+    cd ~/uango_ros/
+    python3.12 -m venv venv
+    source venv/bin/activate
+
+```
+#### 2. Install the package
+```bash
+    echo "--index-url https://pypi.fury.io/miroljubmihailovic98/" > requirements.txt
+    echo "--extra-index-url https://pypi.org/simple/" >> requirements.txt
+    echo "uango_ros_web_socket" >> requirements.txt
+    pip install -r requirements.txt
+```
+
+#### 3. Set environment variables
+```bash
+    export IP_ADDRESS_UANGO=192.168.12.1
+    export PORT_UANGO=8080
+```
+
+#### 4. Run the command
+```bash
+    python3 web_socket **command**
 ```
 
 ---

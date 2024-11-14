@@ -6,17 +6,24 @@ from dotenv import dotenv_values
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from text_parser.parser_main import ParserMain
-from send_command.command_main import CommandMain
+from web_socket.text_parser.parser_main import ParserMain
+from web_socket.send_command.command_main import CommandMain
 from web_socket.web_socket_main import WebSocketMain
+
+
+def get_socket():
+    env = dotenv_values()
+    if 'IP_ADDRESS_UANGO' not in env or 'PORT_UANGO' not in env:
+        env = os.environ
+    return str(env['IP_ADDRESS_UANGO']) + ':' + str(env['PORT_UANGO'])
+
 
 if __name__ == '__main__':
     command_main = CommandMain(sys.argv)
     command = command_main()
     print(command)
 
-    env = dotenv_values()
-    socket_address = str(env['IP_ADDRESS']) + ':' + str(env['PORT'])
+    socket_address = get_socket()
     command_sequence = command.get_command_sequence()
     web_socket = WebSocketMain(command_sequence, socket_address)
     response = asyncio.run(web_socket())
