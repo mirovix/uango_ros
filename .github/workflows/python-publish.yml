@@ -1,4 +1,4 @@
-name: Upload Python Package to Fury
+name: deploy-release
 
 on:
   release:
@@ -8,8 +8,11 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  deploy-release:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -30,26 +33,6 @@ jobs:
             curl -F package=@$PACKAGE_FILE https://$FURY_TOKEN@push.fury.io/miroljubmihailovic98/
         env:
           FURY_TOKEN: ${{ secrets.FURY_TOKEN }}
-
-  create-release:
-    runs-on: ubuntu-latest
-    needs: deploy
-
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Build project (or ensure dist is populated)
-        run: |
-          # Commands to build or package your project
-          echo "Ensure dist directory is populated with release files"
-
-      - name: Check dist directory
-        run: ls -la ./dist
-
       - name: Create a new GitHub release
         uses: softprops/action-gh-release@v1
         with:
