@@ -13,7 +13,7 @@ Before sending any commands, ensure the serial port is correctly configured.
 Set the port communication speed to `115200` baud.
 
 ```bash
-    stty -F /dev/ttymxc7 115200
+stty -F /dev/ttymxc7 115200
 ```
 
 ## Commands
