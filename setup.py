@@ -29,5 +29,5 @@ setup(
     packages=find_packages(exclude=['test', 'test.*']),
     include_package_data=True,
     package_data={
-        'web_socket': ['text_parser/*.yaml', 'send_command/*.yaml']
+        'uango_connector': ['text_parser/*.yaml', 'send_command/*.yaml']
     })

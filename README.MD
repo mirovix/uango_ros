@@ -70,7 +70,7 @@ source venv/bin/activate
 ```bash
 echo "--index-url https://pypi.fury.io/miroljubmihailovic98/" > requirements.txt
 echo "--extra-index-url https://pypi.org/simple/" >> requirements.txt
-echo "uango_ros_web_socket" >> requirements.txt
+echo "Uango-Connector" >> requirements.txt
 pip install -r requirements.txt
 ```
 
