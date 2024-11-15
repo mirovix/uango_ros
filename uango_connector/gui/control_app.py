@@ -21,7 +21,7 @@ class ControlApp:
         button.grid(row=row, column=column, padx=10, pady=10)
 
     @staticmethod
-    def get_buttons_name() -> list[str]:
+    def get_buttons_name() -> list:
         return [
             "turn_on",
             "homing_up",

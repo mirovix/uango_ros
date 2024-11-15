@@ -25,7 +25,7 @@ setup(
     version=version,
     author_email='miroljubmihailovic98@gmail.com',
     install_requires=requirements,
-    python_requires='>=3.12.0',
+    python_requires='>=3.8.0',
     packages=find_packages(exclude=['test', 'test.*']),
     include_package_data=True,
     package_data={
