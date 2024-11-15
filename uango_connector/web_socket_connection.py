@@ -17,7 +17,7 @@ class WebSocketConnection:
                 response = await asyncio.wait_for(websocket.recv(), timeout=self.timeout)
                 return response
         except asyncio.TimeoutError:
-            print("command correctly received")
+            pass
         except Exception as e:
             print(f"An error occurred: {e}")
         return None
