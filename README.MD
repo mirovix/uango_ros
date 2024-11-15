@@ -62,7 +62,7 @@ To run a command, send the command code to the serial port.
 ```bash
 mkdir ~/uango_ros/
 cd ~/uango_ros/
-python3.12 -m venv venv
+python3.8 -m venv venv
 source venv/bin/activate
 
 ```
