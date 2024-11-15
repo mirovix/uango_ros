@@ -10,14 +10,25 @@ class WebSocketConnection:
         self.timeout = timeout
 
     async def __call__(self) -> any:
+        websocket = None
         try:
-            async with await websockets.connect(self.web_socket_output) as websocket:
-                await websocket.send(self.command_sequence)
-                print(f"sent: {self.command_sequence}")
-                response = await asyncio.wait_for(websocket.recv(), timeout=self.timeout)
-                return response
-        except asyncio.TimeoutError:
-            pass
+            websocket = await websockets.connect(self.web_socket_output)
+            await self._send_command(websocket)
+            response = await self._receive_response(websocket)
+            return response
         except Exception as e:
-            print(f"An error occurred: {e}")
-        return None
+            print(f"Error occurred during WebSocket communication: {e}")
+            return None
+        finally:
+            if websocket:
+                await websocket.close()
+
+    async def _send_command(self, websocket):
+        await websocket.send(self.command_sequence)
+        print(f"Command sent: {self.command_sequence}")
+
+    async def _receive_response(self, websocket) -> any:
+        try:
+            return await asyncio.wait_for(websocket.recv(), timeout=self.timeout)
+        except asyncio.TimeoutError:
+            return None
